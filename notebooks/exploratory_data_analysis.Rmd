@@ -16,5 +16,81 @@ data <- read_csv("data/diabetes_data_upload.csv")
 data
 ```
 
+```{r}
+data %>% select(class) %>% filter(class == "Positive") %>% summarise(n())
+```
+```{r}
+data %>% select(class) %>% filter(class == "Negative") %>% summarise(n())
+```
+
+```{r}
+data %>% 
+  ggplot(aes(x=class)) +
+  geom_bar()
+```
+
+
+We have 320 positive and 200 negative patients.
+
+
+```{r}
+colnames(data)
+```
+The response variable is class, and all other variables are predictors. All predictors are categorical except for Age which is a ordinal variable.
+
+# Correlation Plot
+
+```{r}
+data_clean <- 
+```
+
+
+```{r}
+require(ggcorrplot)
+
+corr <- round(cor(data),2)
+corr
+```
+
+
+# Diabetes vs Age
+
+```{r}
+data %>% 
+  ggplot(aes(x=Age, fill=class)) +
+  geom_density(alpha=0.2)
+```
+
+
+There does not appear to be a very large difference in diabetes status based on age.
+
+# Diabetes vs Gender
+
+```{r}
+data %>% 
+  ggplot(aes(x=Gender, fill=class)) +
+  geom_bar()
+```
+
+## chi square test of independence
+
+h0: gender and diabetes status are independent
+
+h1: not independent
+
+```{r}
+table(data$Gender, data$class)
+```
+```{r}
+test <- chisq.test(table(data$Gender, data$class))
+test
+```
+
+```{r}
+test$expected
+```
+With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that gender and diabetes class are not independent.
+
+
 
 
