@@ -68,8 +68,6 @@ data_clean <- data.frame(lapply(data_clean, function(x) {
 
 # converting all columns to numeric
 data_clean <- data.frame(sapply( data_clean, as.numeric ))
-
-
 data_clean
 
 write_csv(data_clean, path="../data/clean_numeric_data.csv")
@@ -108,7 +106,7 @@ data %>%
 
 ## chi square test of independence
 
-h0: gender and diabetes status are independent
+h0: Gender and diabetes status are independent
 
 h1: not independent
 
@@ -125,6 +123,114 @@ test$expected
 ```
 With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that gender and diabetes class are not independent.
 
+# Diabetes vs Polyuria
 
+```{r}
+data %>% 
+  ggplot(aes(x=Polyuria, fill=class)) +
+  geom_bar()
+```
 
+## chi square test of independence
+
+h0: Polyuria and diabetes status are independent
+
+h1: not independent
+
+```{r}
+table(data$Polyuria, data$class)
+```
+```{r}
+test <- chisq.test(table(data$Polyuria, data$class))
+test
+```
+
+```{r}
+test$expected
+```
+With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that polyuria and diabetes class are not independent.
+
+# Diabetes vs Polydipsia
+
+```{r}
+data %>% 
+  ggplot(aes(x=Polydipsia, fill=class)) +
+  geom_bar()
+```
+
+## chi square test of independence
+
+h0: Polydipsia and diabetes status are independent
+
+h1: not independent
+
+```{r}
+table(data$Polydipsia, data$class)
+```
+
+```{r}
+test <- chisq.test(table(data$Polydipsia, data$class))
+test
+```
+
+```{r}
+test$expected
+```
+With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that polydipsia and diabetes class are not independent.
+
+# Diabetes vs sudden.weight.loss 
+
+```{r}
+data %>% 
+  ggplot(aes(x=`sudden weight loss`, fill=class)) +
+  geom_bar()
+```
+
+## chi square test of independence
+
+h0: Sudden weight loss and diabetes status are independent
+
+h1: not independent
+
+```{r}
+table(data$`sudden weight loss`, data$class)
+```
+
+```{r}
+test <- chisq.test(table(data$`sudden weight loss`, data$class))
+test
+```
+
+```{r}
+test$expected
+```
+With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that sudden weight loss and diabetes class are not independent.
+
+# Diabetes vs Partial Paresis
+
+```{r}
+data %>% 
+  ggplot(aes(x=`partial paresis`, fill=class)) +
+  geom_bar()
+```
+
+## chi square test of independence
+
+h0: Partial paresis and diabetes status are independent
+
+h1: not independent
+
+```{r}
+table(data$`partial paresis`, data$class)
+```
+
+```{r}
+test <- chisq.test(table(data$`partial paresis`, data$class))
+test
+```
+
+```{r}
+test$expected
+```
+With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that partial paresis and diabetes class are not independent.
 
