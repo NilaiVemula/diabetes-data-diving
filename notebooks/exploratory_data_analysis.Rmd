@@ -6,6 +6,7 @@ output: html_notebook
 # Importing Required Libraries
 
 ```{r}
+
 require(tidyverse)
 ```
 
@@ -83,7 +84,8 @@ corr <- round(cor(data_clean),2)
 corr
 ```
 ```{r}
-ggcorrplot(corr)
+ggcorrplot(corr, method = "square")
+ggsave("corrplot.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
 
 
