@@ -1,0 +1,20 @@
+---
+title: "Exploratory Data Analysis"
+output: html_notebook
+---
+
+# Importing Required Libraries
+
+```{r}
+require(tidyverse)
+```
+
+# Loading in Data
+
+```{r}
+data <- read_csv("data/diabetes_data_upload.csv")
+data
+```
+
+
+
