@@ -127,4 +127,23 @@ With a p-value < 2.2e-16, we reject our null hypothesis at all significance leve
 
 
 
+```{r}
+chi2 <- c()
+variable <- c()
+for (i in 2:(ncol(data)-1)){
+  statistic <- chisq.test(table(data[[i]], data[[17]]))$statistic
+  name <- colnames(data)[[i]]
+  
+  chi2 <- c(chi2, statistic)
+  variable <- c(variable, name)
+  
+}
+
+d <- data.frame(variable, chi2)
+
+d %>% arrange(desc(chi2))
+
+
+```
+
 
