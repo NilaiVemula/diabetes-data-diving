@@ -41,15 +41,47 @@ The response variable is class, and all other variables are predictors. All pred
 # Correlation Plot
 
 ```{r}
-data_clean <- 
+# replcaing categorical labels to numeric ones
+data_clean <- data.frame(lapply(data, function(x) {
+                  gsub("Yes", "1", x)
+              }))
+
+data_clean <- data.frame(lapply(data_clean, function(x) {
+                  gsub("No", "0", x)
+              }))
+
+data_clean <- data.frame(lapply(data_clean, function(x) {
+                  gsub("Positive", "1", x)
+              }))
+
+data_clean <- data.frame(lapply(data_clean, function(x) {
+                  gsub("Negative", "0", x)
+              }))
+
+data_clean <- data.frame(lapply(data_clean, function(x) {
+                  gsub("Male", "0", x)
+              }))
+
+data_clean <- data.frame(lapply(data_clean, function(x) {
+                  gsub("Female", "1", x)
+              }))
+
+# converting all columns to numeric
+data_clean <- data.frame(sapply( data_clean, as.numeric ))
+
+
+data_clean
 ```
 
 
 ```{r}
 require(ggcorrplot)
 
-corr <- round(cor(data),2)
+corr <- round(cor(data_clean),2)
 corr
+```
+```{r}
+ggcorrplot(corr)
 ```
 
 
