@@ -13,7 +13,7 @@ In the dataset, out of the 520 patients, 320 of the patients were diagnosed with
 The response variable is class, and all other variables are predictors. All predictors are categorical except for Age which is a ordinal variable. The categorical predictors include "Yes" or "No" indicating whether each patient has experienced the specific factor. 
 
 #### Correlation Plot:
-
+![](notebooks/corrplot.png)
 
 #### Age:
 
