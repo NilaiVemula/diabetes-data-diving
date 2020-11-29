@@ -1,0 +1,74 @@
+---
+title: "Model Building"
+output: html_notebook
+---
+
+# Loading in Data
+
+This notebook will be focused on buiding a predictive model from the dataset. The response variable is class, and all other variables are predictors. All predictors are categorical except for Age which is a ordinal variable.
+
+```{r}
+require(tidyverse)
+require(tidymodels)
+require(parsnip)
+require(recipes)
+
+data <- read_csv("data/clean_numeric_data.csv") %>% filter(class==1)
+data
+```
+
+# test-train split
+
+```{r}
+##Sample the dataset. The return for this is row nos.
+set.seed(1)
+row.number <- sample(1:nrow(data), 0.8*nrow(data))
+train = data[row.number,]
+test = data[-row.number,]
+dim(train)
+dim(test)
+```
+
+
+
+# chi square feature selection
+
+
+Polyuria	227.86583895			
+Polydipsia	216.17163270			
+Gender	103.03685928			
+sudden weight loss	97.29630348			
+partial paresis	95.38762744	
+
+
+```{r}
+model <- lm(class ~ Age + Gender + Polyuria + Polydipsia + sudden.weight.loss + partial.paresis, data=data)
+
+summary(model)
+par(mfrow=c(2,2))
+plot(model)
+```
+
+
+# decision tree
+
+```{r}
+# Classification Tree with rpart
+library(rpart)
+
+# grow tree
+fit <- rpart(class ~ Age + Gender + Polyuria + Polydipsia + sudden.weight.loss + partial.paresis, method="class", data=data)
+
+printcp(fit) # display the results
+plotcp(fit) # visualize cross-validation results
+summary(fit) # detailed summary of splits
+
+# plot tree
+plot(fit, uniform=TRUE,
+   main="Classification Tree for Diabetes")
+text(fit, use.n=TRUE, all=TRUE, cex=.8)
+
+# create attractive postscript plot of tree
+#post(fit, file = "c:/tree.ps",
+#   title = "Classification Tree for Kyphosis")
+```
