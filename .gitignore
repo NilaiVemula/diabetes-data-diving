@@ -40,3 +40,9 @@ vignettes/*.pdf
 
 # r markdown notebooks
 *.nb.html
+
+# python virtual environment
+env/
+
+# vscode stuff
+.vscode/
