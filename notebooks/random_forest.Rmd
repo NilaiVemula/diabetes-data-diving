@@ -78,7 +78,7 @@ table(observed=test[[17]],predicted=prediction_for_table)
 ```{r}
 TClass <- factor(c(0, 0, 1, 1))
 PClass <- factor(c(0, 1, 0, 1))
-Y      <- c(3, 40, 61, 0)
+Y      <- c(40, 0, 3, 61)
 df <- data.frame(TClass, PClass, Y)
 
 library(ggplot2)
@@ -98,7 +98,7 @@ ggsave("../plots/confusion_matrix.png", width = 4, height = 4, units = "in",dpi=
 ```{r}
 library(readr)
 diabetes_data_upload <- read_csv(
-  "data/diabetes_data_upload.csv",
+  "../data/diabetes_data_upload.csv",
   col_types = cols(
     Gender = col_factor(levels = c("Male",
                                    "Female")),
@@ -136,6 +136,51 @@ diabetes_data_upload <- read_csv(
 )
 summary(diabetes_data_upload)
 ```
+```{r}
+diabetes_data_upload <- data.frame(diabetes_data_upload)
+```
 
+
+```{r}
+sample = sample.split(diabetes_data_upload$class, SplitRatio = .80)
+train = subset(diabetes_data_upload, sample == 1)
+test  = subset(diabetes_data_upload, sample == 0)
+dim(train)
+dim(test)
+```
+
+
+# random forest
+
+```{r}
+rf2 <- randomForest(
+  class ~ .,
+  data=train,
+  ntree = 100,
+  importance = TRUE
+)
+rf2
+```
+
+```{r}
+plot(rf2)
+```
+
+```{r}
+png(filename = "../plots/variable_importance.png", width = 8, height = 6, units="in", res=400)
+par(bg="#f2f2f2")
+varImpPlot(rf2, main="Variable Importance Plot", type=1, pch=19)
+dev.off()
+```
+
+```{r}
+varUsed(rf2)
+```
+
+```{r}
+prediction_for_table <- predict(rf2,test[,-17])
+table(observed=test[[17]],predicted=prediction_for_table)
+
+```
 
 
