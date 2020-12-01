@@ -26,11 +26,13 @@ data %>% select(class) %>% filter(class == "Negative") %>% summarise(n())
 
 ```{r}
 data %>% 
-  ggplot(aes(x=class)) +
-  geom_bar() +
+  ggplot(aes(x=class, fill=class)) +
+  geom_bar(show.legend = FALSE) +
   theme_bw() +
+    theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  labs(title="Incidence of Diabetes", x="Diabetes Class", y="Count")
 ggsave("../plots/Diabetes_Incidence.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
