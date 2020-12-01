@@ -88,13 +88,13 @@ corr
 
 ```{r}
 ggcorrplot(corr, method = "square")  +
-  theme_bw() +
+  #theme_bw() +
   labs(title="Feature Correlation Matrix") +  
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
   theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
   theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("../plots/corrplot.png", dpi = 1200, width = 4, height = 4, units = "in")
+ggsave("../plots/corrplot.png", dpi = 400, width = 7, height = 8, units = "in")
 ```
 
 # Find Mean of Ages by Class
