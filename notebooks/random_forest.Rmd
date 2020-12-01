@@ -82,14 +82,17 @@ Y      <- c(3, 40, 61, 0)
 df <- data.frame(TClass, PClass, Y)
 
 library(ggplot2)
+
 ggplot(data =  df, mapping = aes(x = TClass, y = PClass)) +
   geom_tile(aes(fill = Y), colour = "white") +
   geom_text(aes(label = sprintf("%1.0f", Y)), vjust = 1, colour="white") +
   scale_fill_gradient() +
   theme_bw() + theme(legend.position = "none") +
   labs(title="Confusion Matrix",x="True Class", y="Predicted Class")+
-  theme(plot.title = element_text(hjust = 0.5)) 
-ggsave("plots/confusion_matrix.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/confusion_matrix.png", width = 4, height = 4, units = "in",dpi= 1200)
 ```
 
 ```{r}
