@@ -106,7 +106,10 @@ data %>%
   labs(title="Diabetes Incidence by Age", fill="Diabetes", x="Age", y="Density") +
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom")
+<<<<<<< HEAD
 ggsave("Diabetes_Incidence_by_Age.png", dpi = 1200, width = 8, height = 8, units = "in")
+=======
+>>>>>>> 92716528a53840137c51b5966486b6fc9ef0d108
 ```
 
 

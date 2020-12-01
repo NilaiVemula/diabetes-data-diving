@@ -13,7 +13,7 @@ require(tidymodels)
 require(parsnip)
 require(recipes)
 
-data <- read_csv("data/clean_numeric_data.csv") %>% filter(class==1)
+data <- read_csv("../data/clean_numeric_data.csv")
 data
 ```
 

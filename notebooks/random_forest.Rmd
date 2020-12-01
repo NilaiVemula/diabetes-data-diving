@@ -1,0 +1,141 @@
+---
+title: "Random Forest"
+output: html_notebook
+---
+
+# Random Forest
+
+```{r}
+require(randomForest)
+require(caTools)
+require(tidyverse)
+```
+
+```{r}
+data <- read_csv("data/clean_numeric_data.csv")
+data
+```
+
+```{r}
+dim(data)
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+data$class = as.factor(data$class)
+```
+
+```{r}
+summary(data)
+```
+
+
+# Split test train
+
+```{r}
+sample = sample.split(data$class, SplitRatio = .80)
+train = subset(data, sample == 1)
+test  = subset(data, sample == 0)
+dim(train)
+dim(test)
+```
+
+
+# random forest
+
+```{r}
+rf <- randomForest(
+  class ~ .,
+  data=train,
+  ntree = 100,
+  importance = TRUE
+)
+rf
+```
+
+```{r}
+plot(rf)
+```
+
+```{r}
+varImpPlot(rf)
+```
+
+```{r}
+varUsed(rf)
+```
+
+```{r}
+prediction_for_table <- predict(rf,test[,-17])
+table(observed=test[[17]],predicted=prediction_for_table)
+
+```
+
+
+```{r}
+TClass <- factor(c(0, 0, 1, 1))
+PClass <- factor(c(0, 1, 0, 1))
+Y      <- c(3, 40, 61, 0)
+df <- data.frame(TClass, PClass, Y)
+
+library(ggplot2)
+
+ggplot(data =  df, mapping = aes(x = TClass, y = PClass)) +
+  geom_tile(aes(fill = Y), colour = "white") +
+  geom_text(aes(label = sprintf("%1.0f", Y)), vjust = 1, colour="white") +
+  scale_fill_gradient() +
+  theme_bw() + theme(legend.position = "none") +
+  labs(title="Confusion Matrix",x="True Class", y="Predicted Class")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/confusion_matrix.png", width = 4, height = 4, units = "in",dpi= 1200)
+```
+
+```{r}
+library(readr)
+diabetes_data_upload <- read_csv(
+  "data/diabetes_data_upload.csv",
+  col_types = cols(
+    Gender = col_factor(levels = c("Male",
+                                   "Female")),
+    Polyuria = col_factor(levels = c("Yes",
+                                     "No")),
+    Polydipsia = col_factor(levels = c("Yes",
+                                       "No")),
+    `sudden weight loss` = col_factor(levels = c("Yes",
+                                                 "No")),
+    weakness = col_factor(levels = c("Yes",
+                                     "No")),
+    Polyphagia = col_factor(levels = c("Yes",
+                                       "No")),
+    `Genital thrush` = col_factor(levels = c("Yes",
+                                             "No")),
+    `visual blurring` = col_factor(levels = c("Yes",
+                                              "No")),
+    Itching = col_factor(levels = c("Yes",
+                                    "No")),
+    Irritability = col_factor(levels = c("Yes",
+                                         "No")),
+    `delayed healing` = col_factor(levels = c("Yes",
+                                              "No")),
+    `partial paresis` = col_factor(levels = c("Yes",
+                                              "No")),
+    `muscle stiffness` = col_factor(levels = c("Yes",
+                                               "No")),
+    Alopecia = col_factor(levels = c("Yes",
+                                     "No")),
+    Obesity = col_factor(levels = c("Yes",
+                                    "No")),
+    class = col_factor(levels = c("Positive",
+                                  "Negative"))
+  )
+)
+summary(diabetes_data_upload)
+```
+
+
+
