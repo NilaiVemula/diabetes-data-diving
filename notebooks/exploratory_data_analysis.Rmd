@@ -28,7 +28,10 @@ data %>% select(class) %>% filter(class == "Negative") %>% summarise(n())
 data %>% 
   ggplot(aes(x=class)) +
   geom_bar() +
-  theme_light()
+  theme_bw() +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("Diabetes_Incidence.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
 
 
@@ -105,11 +108,10 @@ data %>%
   theme_bw() +
   labs(title="Diabetes Incidence by Age", fill="Diabetes", x="Age", y="Density") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  theme(legend.position="bottom")
-<<<<<<< HEAD
+  theme(legend.position="bottom") +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
 ggsave("Diabetes_Incidence_by_Age.png", dpi = 1200, width = 8, height = 8, units = "in")
-=======
->>>>>>> 92716528a53840137c51b5966486b6fc9ef0d108
 ```
 
 
@@ -124,9 +126,12 @@ data %>%
   theme_bw() +
   labs(title="Diabetes Incidence by Gender", fill="Diabetes", x="Gender", y="Frequency") +
   theme(plot.title = element_text(hjust = 0.5)) +
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
 ggsave("Diabetes_Incidence_by_Gender.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
+
 
 ## chi square test of independence
 
@@ -152,7 +157,14 @@ With a p-value < 2.2e-16, we reject our null hypothesis at all significance leve
 ```{r}
 data %>% 
   ggplot(aes(x=Polyuria, fill=class)) +
-  geom_bar()
+  geom_bar() +
+  theme_bw() +
+  labs(title="Diabetes Incidence by Polyuria", fill="Diabetes", x="Polyuria", y="Frequency") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position="bottom") +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("Diabetes_Incidence_by_Polyuria.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
 
 ## chi square test of independence
@@ -179,7 +191,14 @@ With a p-value < 2.2e-16, we reject our null hypothesis at all significance leve
 ```{r}
 data %>% 
   ggplot(aes(x=Polydipsia, fill=class)) +
-  geom_bar()
+  geom_bar() +
+  theme_bw() +
+  labs(title="Diabetes Incidence by Polydipsia", fill="Diabetes", x="Polydipsia", y="Frequency") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position="bottom") +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("Diabetes_Incidence_by_Polydipsia.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
 
 ## chi square test of independence
@@ -207,7 +226,14 @@ With a p-value < 2.2e-16, we reject our null hypothesis at all significance leve
 ```{r}
 data %>% 
   ggplot(aes(x=`sudden weight loss`, fill=class)) +
-  geom_bar()
+  geom_bar() +
+  theme_bw() +
+  labs(title="Diabetes Incidence by Sudden Weight Loss", fill="Diabetes", x="Sudden Weight Loss", y="Frequency") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position="bottom") +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("Diabetes_Incidence_by_Sudden_Weight_Loss.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
 
 ## chi square test of independence
@@ -230,15 +256,19 @@ test$expected
 ```
 With a p-value < 2.2e-16, we reject our null hypothesis at all significance levels and conclude that sudden weight loss and diabetes class are not independent.
 
-
-
-
 # Diabetes vs Partial Paresis
 
 ```{r}
 data %>% 
   ggplot(aes(x=`partial paresis`, fill=class)) +
-  geom_bar()
+  geom_bar() +
+  theme_bw() +
+  labs(title="Diabetes Incidence by Partial Paresis", fill="Diabetes", x="Partial Paresis", y="Frequency") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(legend.position="bottom") +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("Diabetes_Incidence_by_Partial_Paresis.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```
 
 ## chi square test of independence
@@ -276,6 +306,4 @@ for (i in 2:(ncol(data)-1)){
 d <- data.frame(variable, chi2)
 
 d %>% arrange(desc(chi2))
-
-
 ```
