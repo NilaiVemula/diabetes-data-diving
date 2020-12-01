@@ -31,7 +31,7 @@ data %>%
   theme_bw() +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
   theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence.png", dpi = 1200, width = 8, height = 8, units = "in")
+ggsave("../plots/Diabetes_Incidence.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 
@@ -85,9 +85,16 @@ require(ggcorrplot)
 corr <- round(cor(data_clean),2)
 corr
 ```
+
 ```{r}
-ggcorrplot(corr, method = "square")
-ggsave("corrplot.png", dpi = 1200, width = 8, height = 8, units = "in")
+ggcorrplot(corr, method = "square")  +
+  theme_bw() +
+  labs(title="Feature Correlation Matrix") +  
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/corrplot.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 # Find Mean of Ages by Class
@@ -110,8 +117,9 @@ data %>%
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom") +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence_by_Age.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/Diabetes_Incidence_by_Age.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 
@@ -128,8 +136,9 @@ data %>%
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom") +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence_by_Gender.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/Diabetes_Incidence_by_Gender.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 
@@ -163,8 +172,9 @@ data %>%
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom") +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence_by_Polyuria.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/Diabetes_Incidence_by_Polyuria.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 ## chi square test of independence
@@ -197,8 +207,9 @@ data %>%
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom") +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence_by_Polydipsia.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/Diabetes_Incidence_by_Polydipsia.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 ## chi square test of independence
@@ -232,8 +243,9 @@ data %>%
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom") +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence_by_Sudden_Weight_Loss.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))+
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/Diabetes_Incidence_by_Sudden_Weight_Loss.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 ## chi square test of independence
@@ -267,8 +279,9 @@ data %>%
   theme(plot.title = element_text(hjust = 0.5)) +
   theme(legend.position="bottom") +
   theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("Diabetes_Incidence_by_Partial_Paresis.png", dpi = 1200, width = 8, height = 8, units = "in")
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(legend.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/Diabetes_Incidence_by_Partial_Paresis.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
 ## chi square test of independence
