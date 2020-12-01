@@ -27,7 +27,8 @@ data %>% select(class) %>% filter(class == "Negative") %>% summarise(n())
 ```{r}
 data %>% 
   ggplot(aes(x=class)) +
-  geom_bar()
+  geom_bar() +
+  theme_light()
 ```
 
 
@@ -92,7 +93,10 @@ ggsave("corrplot.png", dpi = 1200, width = 8, height = 8, units = "in")
 ```{r}
 data %>% 
   ggplot(aes(x=Age, fill=class)) +
-  geom_density(alpha=0.2)
+  geom_density(alpha=0.25) +
+  theme_bw() +
+  labs(title="Diabetes Incidence by Age", fill="Diabetes", x="Age", y="Density") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
