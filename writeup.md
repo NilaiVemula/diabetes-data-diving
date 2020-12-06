@@ -13,7 +13,7 @@
 In the dataset, out of the 520 patients, 320 of the patients were diagnosed with Diabetes and 200 of the patients were not diagnosed with Diabetes. This is important to know, so we can see the factors that predominantly occured with the 320 patients that were diagnosed versus to 200 patients that were not diagnosed with diabetes. 
 
 #### Correlation Matrix:
-![correlation matrix](/Desktop/Gender)
+
 
 #### X^2 Feature Selection
 
@@ -21,6 +21,7 @@ In the dataset, out of the 520 patients, 320 of the patients were diagnosed with
 ###### AGE:
 
 ###### GENDER:
+![correlation matrix](/Desktop/Gender.png)
 ###### POLYURIA:
 ###### POLYDIPSIA:
 ###### SUDDEN WEIGHT LOSS:
