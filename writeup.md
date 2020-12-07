@@ -50,6 +50,8 @@ Polydipsia is another term for abnormally excessive thirst. Our initial hypothes
 
 #### BAR CHART:
 
+<img src="plots/Diabetes_Incidence_by_Polydipsia.png" alt="polydipsia" width="500"/>
+
 #### CONCLUSION: 
 
 By looking at the bar chart, we can see that nearly all patients that experienced polydipsia were diagnosed with diabetes. Some individuals that said "no", were also diagnosed with diabetes. However, almost every individual that said "yes" to polydipsia were later diagnosed with diabetes. Our conclusion was that nearly all patients with polydipsia have diabetes. Therefore, if a patient experienced polydipsia, they have a higher chance of being diagnosed with diabetes. This conclusion and the bar chart supports our initial hypothesis because a patient having polydipsia is an important indicator that they might also have diagnosis. Therfore, polydipsia can be used as a predictor/indicator for diabetes due to these patterns. 
@@ -62,6 +64,8 @@ Our initial hypothesis for sudden weight loss was that if an individual had rece
 
 #### BAR CHART:
 
+<img src="plots/Diabetes_Incidence_by_Sudden_Weight_Loss.png" alt="sudden weight loss" width="500"/>
+
 #### CONCLUSION:
 
 From the bar chart, we can see that a los of individuals that said yes to experiencing sudden weight loss also were diagnosed for diabetes. There were a few who experienced sudden weight lodd and were still not diagnosed with diabetes. There were also several individuals that did not experience sudden weight loss and were stilll diagnosed with diabetes. Even though, sudden weight loss has a smaller amount of difference between the two values compared to polydipsia and polyuria; however, there is still a significant difference. Therefore, our conclusion was that if a patient has had sudden weight loss, it is very likely that they have diabetes, but the converse is not true. We did not include the second part within the initial hypothesis because we did not really think about the pattern for the converse. However, the first part of our conclusion agrees with our initial hypothesis. Therefore, sudden weight loss can be used as a predictor/indicator of whether the patient will have diabetes or not. 
@@ -73,6 +77,8 @@ From the bar chart, we can see that a los of individuals that said yes to experi
 Paresis in a condition typifies by a weakness of voluntary movement. We came up with the initial hypothesis that if the individual has partial paresis, then they have a much higher chance of being diagnosed with diabetes. We came up with this hypothesis by using prior knowledge. Diabetes can sometimes lead to nerve damage which can lead to partial paresis in some cases, so we believed that there would be some sort of correlation between the two. There were 224 patients that said "yes" to experiencing partial paresis, and 296 said "no" out of the 520 patients.  
 
 #### BAR CHART:
+
+<img src="plots/Diabetes_Incidence_by_Partial_Paresis.png" alt="partial paresis" width="500"/>
 
 #### CONCLUSION:
 
