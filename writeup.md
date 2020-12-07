@@ -35,7 +35,7 @@ In the dataset, out of the 520 patients, 320 of the patients were diagnosed with
 
 <img src="plots/corrplot.png" alt="correlation" width="500"/>
 
-### X^2 Feature Selection
+### $X^2$ Feature Selection
 
 #### Selected Features:
 When analyzing the various features we selected, we first came to an initial hypothesis as a group. We then created bar charts to provide an analysis of the specific variable and how this affects the possibility of diagnosis for diabetes. Then, we came to a conclusion based on our analysis of the bar chart. Our conclusion was based on if our bar chart supported or contradict the initial hypothesis, and what our bar chart indicated was the relationship between the variable and the possible diagnosis for diabetes.
