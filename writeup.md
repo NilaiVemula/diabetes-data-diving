@@ -32,6 +32,7 @@ INITIAL HYPOTHESIS:
 Polyuria is the production of abnormally large volumes of dilute urine. Our initial hypothesis was that if the patient experienced polyuria, they have a higher chance of being diagnosed with diabetes. We came to this initial hypothesis through some research and prior knowledge. If an individual has diabetes, they tend to havehigher blood suagr levels, and their kedney will try to filter out their high blood sugar levels. This produces a lot of excess urine, leading to polyuria. Out of the 520 patients that were interviewed, 258 had polyuria and 262 did no thave polyuria. 
 
 BAR CHART:
+<img src="plots/Diabetes_Incidence_by_Polyuria.png" alt="gender" width="500"/>
 
 CONCLUSION:
 By the bar chart, we can tell that a great number of individuals who were diagnosed with diabetes experienced polyuria. A few patients that were not diagnosed with diabetes also experienced polyuria, but there was a greate difference in the frequencies in the two situations. Due to this great difference, we can come to the conclusion that nearly all patients with polyuria hav diabetes. Therefore, if a patient experienced polyuria, they have a higher chance of being diagnosed with diabetes. This shows us that a possible predictor/indicator for whether an individual has diabetes should definetly be polyuria. Our bar chart also agreed with our initial hypothesis. 
