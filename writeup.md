@@ -23,7 +23,11 @@ When analyzing the various features we selected, we first came to an initial hyp
 ##### AGE:
 
 ##### GENDER:
-![gender](plots/Diabetes_Incidence_by_Gender.png)
+
+<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+
+<img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="250"/>
+
 
 ##### POLYURIA:
 INITIAL HYPOTHESIS:
