@@ -44,7 +44,7 @@ Polydipsia is another term for abnormally excessive thirst. Our initial hypothes
 
 BAR CHART:
 
-<img src="plots/Diabetes_Incidence_by_Poldipsia.png" alt="polydipsia" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Polydipsia.png" alt="polydipsia" width="500"/>
 
 CONCLUSION: 
 By looking at the bar chart, we can see that nearly all patients that experienced polydipsia were diagnosed with diabetes. Some individuals that said "no", were also diagnosed with diabetes. However, almost every individual that said "yes" to polydipsia were later diagnosed with diabetes. Our conclusion was that nearly all patients with polydipsia have diabetes. Therefore, if a patient experienced polydipsia, they have a higher chance of being diagnosed with diabetes. This conclusion and the bar chart supports our initial hypothesis because a patient having polydipsia is an important indicator that they might also have diagnosis. Therfore, polydipsia can be used as a predictor/indicator for diabetes due to these patterns. 
