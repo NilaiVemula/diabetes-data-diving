@@ -1,3 +1,22 @@
+---
+title: Diabetes Data Diving Final Write-up
+authors:
+  nilai:
+    name: Nilai Vemula
+    display_name: Nilai
+    email: nilai.r.vemula@vanderbilt.edu
+    web: http://nilaivemula.github.io/
+    github: NilaiVemula
+  anvitha:
+    name: Anvitha Kosuraju
+    display_name: Anvitha
+  sithara:
+    name: Sithara Samudrala
+    display_name: Sithara
+    
+date: 12/9/2020
+---
+
 # Final Project Write-Up
 
 ## Introduction:
