@@ -107,6 +107,6 @@ According to the bar chart most of the patients that said "yes" to partial pares
 
 ## Model:
 
-NILAI
+For the modelling portion of our project, we compared two different types of models. For our simple model, we tried out a linear regression. For our complex model, we implemented a random forest classifier. 
 
 ## Conclusion:
