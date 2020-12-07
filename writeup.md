@@ -24,7 +24,7 @@ When analyzing the various features we selected, we first came to an initial hyp
 
 ##### GENDER:
 
-<img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="250"/>
+<img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
 
 
 ##### POLYURIA:
