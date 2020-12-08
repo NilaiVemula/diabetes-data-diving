@@ -4,6 +4,10 @@ author: Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
 date: 12/9/2020
 ---
 
+MATH 2820L Final Project
+
+By Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
+
 Table of Contents:
 
 * TOC
