@@ -1,6 +1,10 @@
 ---
-title: "Model Building"
-output: html_notebook
+title: "Linear Regression Model"
+author: "Nilai Vemula"
+date: "December 7, 2020"
+output:
+  github_document:
+    html_preview: no
 ---
 
 # Loading in Data
@@ -16,6 +20,7 @@ data
 
 # chi square feature selection
 
+These are the results from the chi-square feature selection process:
 
 Polyuria	227.86583895			
 Polydipsia	216.17163270			
@@ -23,15 +28,15 @@ Gender	103.03685928
 sudden weight loss	97.29630348			
 partial paresis	95.38762744	
 
-# building the linear model
+# Building the linear model
 
 ```{r}
+# building the linear model
 model <- lm(class ~ Age + Gender + Polyuria + Polydipsia + sudden.weight.loss + partial.paresis, data=data)
 
 summary(model)
-par(mfrow=c(2,2))
-plot(model)
 ```
+
 MSPE:
 
 ```{r}
@@ -53,7 +58,7 @@ mod_results <- data.frame(observed = data$class, predicted = model$fitted.values
 head(mod_results)
 ```
 
-```{r}
+```{r residual}
 ggplot(mod_results, aes(y = residual, x = predicted)) + 
     geom_point() + 
     geom_hline(yintercept = 0) +
@@ -67,7 +72,7 @@ ggsave("../plots/residual_plot.png", dpi = 1200, width = 4, height = 4, units = 
 
 
 Q-Q Plot:
-```{r}
+```{r qq}
 ggplot(mod_results, aes(sample = residual)) + 
     geom_qq()+
   geom_qq_line() +
