@@ -1,102 +1,29 @@
 ---
-title: "Random Forest"
-output: html_notebook
+title: "Random Forest Model"
+author: "Nilai Vemula"
+date: "December 7, 2020"
+output:
+  github_document:
+    html_preview: no
 ---
 
-# Random Forest
+## Random Forest Model
 
-```{r}
+### Loading Random Forest Libraries
+
+```{r, results='hide', message=FALSE, warning=FALSE}
 require(randomForest)
 require(caTools)
 require(tidyverse)
+
+set.seed(2020)
 ```
 
-```{r}
-data <- read_csv("data/clean_numeric_data.csv")
-data
-```
+### Loading in Data
+
+We can read in the data using the `read_csv()` function. The parameters included in this function are to transform the categorical data into factor data types for easy analysis later on.
 
 ```{r}
-dim(data)
-```
-
-```{r}
-head(data)
-```
-
-```{r}
-data$class = as.factor(data$class)
-```
-
-```{r}
-summary(data)
-```
-
-
-# Split test train
-
-```{r}
-sample = sample.split(data$class, SplitRatio = .80)
-train = subset(data, sample == 1)
-test  = subset(data, sample == 0)
-dim(train)
-dim(test)
-```
-
-
-# random forest
-
-```{r}
-rf <- randomForest(
-  class ~ .,
-  data=train,
-  ntree = 100,
-  importance = TRUE
-)
-rf
-```
-
-```{r}
-plot(rf)
-```
-
-```{r}
-varImpPlot(rf)
-```
-
-```{r}
-varUsed(rf)
-```
-
-```{r}
-prediction_for_table <- predict(rf,test[,-17])
-table(observed=test[[17]],predicted=prediction_for_table)
-
-```
-
-
-```{r}
-TClass <- factor(c(0, 0, 1, 1))
-PClass <- factor(c(0, 1, 0, 1))
-Y      <- c(40, 0, 3, 61)
-df <- data.frame(TClass, PClass, Y)
-
-library(ggplot2)
-
-ggplot(data =  df, mapping = aes(x = TClass, y = PClass)) +
-  geom_tile(aes(fill = Y), colour = "white") +
-  geom_text(aes(label = sprintf("%1.0f", Y)), vjust = 1, colour="white") +
-  scale_fill_gradient() +
-  theme_bw() + theme(legend.position = "none") +
-  labs(title="Confusion Matrix",x="True Class", y="Predicted Class")+
-  theme(plot.title = element_text(hjust = 0.5)) +
-  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
-  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
-ggsave("../plots/confusion_matrix.png", width = 4, height = 4, units = "in",dpi= 1200)
-```
-
-```{r}
-library(readr)
 diabetes_data_upload <- read_csv(
   "../data/diabetes_data_upload.csv",
   col_types = cols(
@@ -134,53 +61,101 @@ diabetes_data_upload <- read_csv(
                                   "Negative"))
   )
 )
+
+diabetes_data_upload <- data.frame(diabetes_data_upload)
+
 summary(diabetes_data_upload)
 ```
-```{r}
-diabetes_data_upload <- data.frame(diabetes_data_upload)
-```
 
+In the summary of our data, we see that there are more patients with diabetes than without, which calls into question the validity of our model. While dataset is unbalanced, 320 vs 200 is not a very large difference, so our model should still be reasonably accurate.
+
+
+### Splitting Data into a Training and Testing Set
+
+In preparation modeling our data, we can first separate it into a testing and a training set with a split ratio of 0.8. This means that 80% of our overall dataset will be used for training and 20% will be used for testing the model at the end.
 
 ```{r}
 sample = sample.split(diabetes_data_upload$class, SplitRatio = .80)
 train = subset(diabetes_data_upload, sample == 1)
 test  = subset(diabetes_data_upload, sample == 0)
+
 dim(train)
 dim(test)
 ```
 
+### Building the Model
 
-# random forest
+We will build a random forest model using the `randomForest()` function and typical default parameter values of 100 trees in the forest.
 
 ```{r}
-rf2 <- randomForest(
+rf <- randomForest(
   class ~ .,
   data=train,
   ntree = 100,
   importance = TRUE
 )
-rf2
+rf
 ```
 
 ```{r}
-plot(rf2)
+train_accuracy <- (rf$confusion[1,1] + rf$confusion[2,2]) / (dim(train)[1]) 
 ```
 
-```{r}
-png(filename = "../plots/variable_importance.png", width = 8, height = 6, units="in", res=400)
+After training the random forest model, we see that our model has a training accuracy of `r round(train_accuracy,3)*100`%.
+
+
+We can plotting the model error vs the number of trees in the forest below and we observe that our model likely does not need the default amount of 100 trees. The error starts to sharply decrease with the first few trees, but then it quickly plateaus.
+
+```{r error}
+plot(rf)
+```
+
+### Variable Importance 
+
+
+```{r var}
+
 par(bg="#f2f2f2")
-varImpPlot(rf2, main="Variable Importance Plot", type=1, pch=19)
+varImpPlot(rf, main="Variable Importance Plot", type=1, pch=19)
+
+dev.copy(png, filename = "../plots/variable_importance.png", width = 8, height = 6, units="in", res=400)
 dev.off()
 ```
 
+The random forest model is very interesting because it can allow us to investigate the relative importance of the variables that we use in our model. In the variable importance plot above, we see that polydipsia, polyuria, gender, and age are the four most important variables in our model. This is determined by computing the `MeanDecreaseAccuracy`. This quantity is calculated by changing the values in each feature and then observing how much that change decreases the accuracy of the model. An interesting conclusion from this plot is that age is very important to the accuracy of the model. In our density plots above, we concluded that there was only a slight difference in the mean ages between the patients that had diabetes and did not have diabetes, and age also was not statistically significant in the linear model. Therefore, it is likely that age has a nonlinear relationship with the diabetes status of a patient or that age in combination with another factor is an important predictor. 
+
+### Validating on the Testing Set
+
+Seeing that the model had good accuracy on the training set and the conclusions from the variable importance plot are reasonable, we can now validate our model on the remaining 20% of the dataset. We use our random forest model to generate predictions for the remaining samples and then compare those with the observed diabetes status of those patients. Finally, we can visualize this with a confusion matrix.
+
 ```{r}
-varUsed(rf2)
+prediction_for_table <- predict(rf,test[,-17])
+confusion <- table(observed=test[[17]],predicted=prediction_for_table)
+confusion
+```
+
+```{r confusion}
+true_class <- factor(c('Negative', 'Negative', 'Positive', 'Positive'))
+predicted_class <- factor(c('Negative', 'Positive', 'Negative', 'Positive'))
+counts      <- c(confusion[2,2], confusion[2,1], confusion[1,2], confusion[1,1])
+df <- data.frame(true_class, predicted_class, counts)
+
+
+ggplot(data =  df, mapping = aes(x = true_class, y = predicted_class)) +
+  geom_tile(aes(fill = counts), colour = "white") +
+  geom_text(aes(label = sprintf("%1.0f", counts)), vjust = 1, colour="white") +
+  scale_fill_gradient() +
+  theme_bw() + theme(legend.position = "none") +
+  labs(title="Confusion Matrix",x="True Class", y="Predicted Class")+
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2')) +
+  theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
+ggsave("../plots/confusion_matrix.png", width = 4, height = 4, units = "in",dpi= 1200)
 ```
 
 ```{r}
-prediction_for_table <- predict(rf2,test[,-17])
-table(observed=test[[17]],predicted=prediction_for_table)
-
+test_accuracy <- (confusion[2,2] + confusion[1,1])/sum(confusion)
+print(test_accuracy)
 ```
-
+From our confusion matrix, we can see that the testing accuracy of our model is `r round(test_accuracy,3)*100`%. This value is similar to that of our training accuracy, indicating that our model is not over-fitting to the data. These model accuracy values are very good, and our model has great predictive power. We can do further hyper-parameter tuning to improve our model more, but that is out of the scope of this project.
 
