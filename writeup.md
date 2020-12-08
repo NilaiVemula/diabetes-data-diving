@@ -35,9 +35,26 @@ In the dataset, out of the 520 patients, 320 of the patients were diagnosed with
 
 ## Feature Selection
 
-Chi-square feature selection was used as our method for selecting some of our 16 predictor variables for further analysis.
+Chi-square feature selection was used as our method for selecting some of our 15 categorical predictor variables for further analysis.
+
+|      Feature       | 𝜒2 Test Statistic |
+| :----------------: | :---------------: |
+|      Polyuria      |       227.9       |
+|     Polydipsia     |       216.2       |
+|       Gender       |       103.1       |
+| Sudden Weight Loss |       97.3        |
+|  Partial Paresis   |       95.4        |
+|     Polyphagia     |       59.6        |
+|    Irritability    |       45.2        |
+|      Alopecia      |       36.1        |
+|  Visual Blurring   |       31.8        |
+|      Weakness      |       29.8        |
+
+
 
 ### Selected Features:
+We chose the variables with the highest chi-square values (Polyuria, Polydipsia, Gender, Sudden Weight Loss, and Partial Paresis) along with Age to investigate further. 
+
 When analyzing the various features we selected, we first came to an initial hypothesis as a group. We then created bar charts to provide an analysis of the specific variable and how this affects the possibility of diagnosis for diabetes. Then, we came to a conclusion based on our analysis of the bar chart. Our conclusion was based on if our bar chart supported or contradict the initial hypothesis, and what our bar chart indicated was the relationship between the variable and the possible diagnosis for diabetes.
 
 ## Age:
@@ -109,9 +126,43 @@ According to the bar chart most of the patients that said "yes" to partial pares
 
 For the modelling portion of our project, we compared two different types of models. For our simple model, we tried out a linear regression. For our complex model, we implemented a random forest classifier. 
 
-## Linear Model
+## Linear Regression Model
 
-### Creating the Model
+### Loading in Data
+
+This notebook will be focused on building a predictive model from the
+dataset. The response variable is class, and all other variables are
+predictors. All predictors are categorical except for Age which is a
+ordinal variable. In the encoding below, “Yes” is 1 and “No” is 0.
+Additionally, “Male” is 0 and “Female” is 1 for the Gender column.
+
+``` r
+require(tidyverse)
+set.seed(100)
+
+data <- read_csv("../data/clean_numeric_data.csv")
+head(data)
+```
+
+    ## # A tibble: 6 x 17
+    ##     Age Gender Polyuria Polydipsia sudden.weight.l~ weakness Polyphagia
+    ##   <dbl>  <dbl>    <dbl>      <dbl>            <dbl>    <dbl>      <dbl>
+    ## 1    40      0        0          1                0        1          0
+    ## 2    58      0        0          0                0        1          0
+    ## 3    41      0        1          0                0        1          1
+    ## 4    45      0        0          0                1        1          1
+    ## 5    60      0        1          1                1        1          1
+    ## 6    55      0        1          1                0        1          1
+    ## # ... with 10 more variables: Genital.thrush <dbl>, visual.blurring <dbl>,
+    ## #   Itching <dbl>, Irritability <dbl>, delayed.healing <dbl>,
+    ## #   partial.paresis <dbl>, muscle.stiffness <dbl>, Alopecia <dbl>,
+    ## #   Obesity <dbl>, class <dbl>
+
+### Building the linear model
+
+Using the results of the chi-square feature selection process from
+earlier, we will limit the linear regression model to the six variables
+we investigated above.
 
 ``` r
 # building the linear model
@@ -145,7 +196,16 @@ summary(model)
     ## Multiple R-squared:  0.596,  Adjusted R-squared:  0.5913 
     ## F-statistic: 126.1 on 6 and 513 DF,  p-value: < 2.2e-16
 
-MSPE:
+From the summary of the model, we see that all the variables have
+p-values\<0.05, indicating statistically significant relationships,
+except for Age and Partial Paresis. Additionally, all variables except
+for Age have a positive slope which makes sense given that our bar
+charts show that answering “Yes” for these risk factors or being female
+makes it much more likely for a patient to have diabetes.
+
+We can also calculate the following performance metrics for our model.
+
+Mean Squared Prediction Error (MSPE):
 
 ``` r
 mean(model$residual^2)
@@ -160,6 +220,15 @@ summary(model)$r.squared
 ```
 
     ## [1] 0.5960276
+
+### Checking Assumptions
+
+For a linear model, we first check to see if the relationships in the
+linear model are independent. These risk factors in the dataset are not
+necessarily independent. In particular, as evidenced from the
+correlation heatmap plot from earlier, polydipsia and polyuria are
+highly correlated with each other. They also have a biological link. The
+independence assumption of the linear model is not met.
 
 Residual Plot:
 
@@ -191,6 +260,12 @@ ggplot(mod_results, aes(y = residual, x = predicted)) +
 
 
 
+In the residual plot, we expect to see symmetrically distributed points
+forming a cloud. We also hope to see low residual values and no clear
+patterns. This is not the case for our data because the output must be a
+0 or a 1. This causes the linear regression model to form two distinctive
+lines on the plot.
+
 Q-Q Plot:
 
 ``` r
@@ -208,6 +283,12 @@ ggplot(mod_results, aes(sample = residual)) +
 
 
 
+In the Q-Q plot, we expect to see the points in the scatter plot to
+closely follow the diagonal line. This pattern is clearly not observed.
+
+The mean and standard deviation for our residuals can be calculated as
+such:
+
 ``` r
 mean_res <- mean(mod_results$residual)
 sd_res <- sd(mod_results$residual)
@@ -215,6 +296,11 @@ print(c(mean_res, sd_res))
 ```
 
     ## [1] -2.469760e-17  3.095141e-01
+
+### Conclusion
+
+Overall, our assumptions are not met, and a linear regression model is
+not a good way to model our data.
 
 ## Random Forest Model
 

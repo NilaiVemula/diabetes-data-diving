@@ -3,90 +3,43 @@ Linear Regression Model
 Nilai Vemula
 December 7, 2020
 
-# Loading in Data
+## Linear Regression Model
+
+### Loading in Data
 
 This notebook will be focused on building a predictive model from the
 dataset. The response variable is class, and all other variables are
 predictors. All predictors are categorical except for Age which is a
-ordinal variable.
+ordinal variable. In the encoding below, “Yes” is 1 and “No” is 0.
+Additionally, “Male” is 0 and “Female” is 1 for the Gender column.
 
 ``` r
 require(tidyverse)
-```
+set.seed(100)
 
-    ## Loading required package: tidyverse
-
-    ## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-
-    ## v ggplot2 3.3.2     v purrr   0.3.4
-    ## v tibble  3.0.1     v dplyr   1.0.0
-    ## v tidyr   1.1.2     v stringr 1.4.0
-    ## v readr   1.3.1     v forcats 0.5.0
-
-    ## Warning: package 'tidyr' was built under R version 4.0.3
-
-    ## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
-``` r
 data <- read_csv("../data/clean_numeric_data.csv")
+head(data)
 ```
 
-    ## Parsed with column specification:
-    ## cols(
-    ##   Age = col_double(),
-    ##   Gender = col_double(),
-    ##   Polyuria = col_double(),
-    ##   Polydipsia = col_double(),
-    ##   sudden.weight.loss = col_double(),
-    ##   weakness = col_double(),
-    ##   Polyphagia = col_double(),
-    ##   Genital.thrush = col_double(),
-    ##   visual.blurring = col_double(),
-    ##   Itching = col_double(),
-    ##   Irritability = col_double(),
-    ##   delayed.healing = col_double(),
-    ##   partial.paresis = col_double(),
-    ##   muscle.stiffness = col_double(),
-    ##   Alopecia = col_double(),
-    ##   Obesity = col_double(),
-    ##   class = col_double()
-    ## )
+    ## # A tibble: 6 x 17
+    ##     Age Gender Polyuria Polydipsia sudden.weight.l~ weakness Polyphagia
+    ##   <dbl>  <dbl>    <dbl>      <dbl>            <dbl>    <dbl>      <dbl>
+    ## 1    40      0        0          1                0        1          0
+    ## 2    58      0        0          0                0        1          0
+    ## 3    41      0        1          0                0        1          1
+    ## 4    45      0        0          0                1        1          1
+    ## 5    60      0        1          1                1        1          1
+    ## 6    55      0        1          1                0        1          1
+    ## # ... with 10 more variables: Genital.thrush <dbl>, visual.blurring <dbl>,
+    ## #   Itching <dbl>, Irritability <dbl>, delayed.healing <dbl>,
+    ## #   partial.paresis <dbl>, muscle.stiffness <dbl>, Alopecia <dbl>,
+    ## #   Obesity <dbl>, class <dbl>
 
-``` r
-data
-```
+### Building the linear model
 
-    ## # A tibble: 520 x 17
-    ##      Age Gender Polyuria Polydipsia sudden.weight.l~ weakness Polyphagia
-    ##    <dbl>  <dbl>    <dbl>      <dbl>            <dbl>    <dbl>      <dbl>
-    ##  1    40      0        0          1                0        1          0
-    ##  2    58      0        0          0                0        1          0
-    ##  3    41      0        1          0                0        1          1
-    ##  4    45      0        0          0                1        1          1
-    ##  5    60      0        1          1                1        1          1
-    ##  6    55      0        1          1                0        1          1
-    ##  7    57      0        1          1                0        1          1
-    ##  8    66      0        1          1                1        1          0
-    ##  9    67      0        1          1                0        1          1
-    ## 10    70      0        0          1                1        1          1
-    ## # ... with 510 more rows, and 10 more variables: Genital.thrush <dbl>,
-    ## #   visual.blurring <dbl>, Itching <dbl>, Irritability <dbl>,
-    ## #   delayed.healing <dbl>, partial.paresis <dbl>, muscle.stiffness <dbl>,
-    ## #   Alopecia <dbl>, Obesity <dbl>, class <dbl>
-
-# chi square feature selection
-
-These are the results from the chi-square feature selection process:
-
-Polyuria 227.86583895  
-Polydipsia 216.17163270  
-Gender 103.03685928  
-sudden weight loss 97.29630348  
-partial paresis 95.38762744
-
-# Building the linear model
+Using the results of the chi-square feature selection process from
+earlier, we will limit the linear regression model to the six variables
+we investigated above.
 
 ``` r
 # building the linear model
@@ -120,7 +73,16 @@ summary(model)
     ## Multiple R-squared:  0.596,  Adjusted R-squared:  0.5913 
     ## F-statistic: 126.1 on 6 and 513 DF,  p-value: < 2.2e-16
 
-MSPE:
+From the summary of the model, we see that all the variables have
+p-values\<0.05, indicating statistically significant relationships,
+except for Age and Partial Paresis. Additionally, all variables except
+for Age have a positive slope which makes sense given that our bar
+charts show that answering “Yes” for these risk factors or being female
+makes it much more likely for a patient to have diabetes.
+
+We can also calculate the following performance metrics for our model.
+
+Mean Squared Prediction Error (MSPE):
 
 ``` r
 mean(model$residual^2)
@@ -135,6 +97,15 @@ summary(model)$r.squared
 ```
 
     ## [1] 0.5960276
+
+### Checking Assumptions
+
+For a linear model, we first check to see if the relationships in the
+linear model are independent. These risk factors in the dataset are not
+necessarily independent. In particular, as evidenced from the
+correlation heatmap plot from earlier, polydipsia and polyuria are
+highly correlated with each other. They also have a biological link. The
+independence assumption of the linear model is not met.
 
 Residual Plot:
 
@@ -168,6 +139,12 @@ ggplot(mod_results, aes(y = residual, x = predicted)) +
 ggsave("../plots/residual_plot.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
+In the residual plot, we expect to see symmetrically distributed points
+forming a cloud. We also hope to see low residual values and no clear
+patterns. This is not the case for our data because the output must be a
+0 or a 1. This causes the linear regression model to form two
+distinctive lines on the plot.
+
 Q-Q Plot:
 
 ``` r
@@ -187,6 +164,12 @@ ggplot(mod_results, aes(sample = residual)) +
 ggsave("../plots/qq_plot.png", dpi = 1200, width = 4, height = 4, units = "in")
 ```
 
+In the Q-Q plot, we expect to see the points in the scatter plot to
+closely follow the diagonal line. This pattern is clearly not observed.
+
+The mean and standard deviation for our residuals can be calculated as
+such:
+
 ``` r
 mean_res <- mean(mod_results$residual)
 sd_res <- sd(mod_results$residual)
@@ -194,3 +177,8 @@ print(c(mean_res, sd_res))
 ```
 
     ## [1] -2.469760e-17  3.095141e-01
+
+### Conclusion
+
+Overall, our assumptions are not met, and a linear regression model is
+not a good way to model our data.
