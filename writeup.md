@@ -1,7 +1,6 @@
 ---
 title: Diabetes Data Diving Final Write-up
 author: Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
-    
 date: 12/9/2020
 ---
 
