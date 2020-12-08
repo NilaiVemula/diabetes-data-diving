@@ -19,6 +19,8 @@ date: 12/9/2020
 
 By Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
 
+Table of Contents:
+
 * TOC
 {:toc}
 
