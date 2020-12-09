@@ -55,6 +55,8 @@ When analyzing the various features we selected, we first came to an initial hyp
 
 ## Age:
 
+<img src="plots/Diabetes_Incidence_by_Age.png" alt="gender" width="500"/>
+
 ## Gender:
 
 <img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
