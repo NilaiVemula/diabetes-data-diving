@@ -46,3 +46,5 @@ env/
 
 # vscode stuff
 .vscode/
+
+**/.DS_Store
