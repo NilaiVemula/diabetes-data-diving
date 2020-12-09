@@ -55,7 +55,17 @@ When analyzing the various features we selected, we first came to an initial hyp
 
 ## Age:
 
+### INITIAL HYPOTHESIS:
+
+Our initial hypothesis was that if the patient was older, the patient has a higher chance of being diagnosed with diabetes. This initial hypothesis was primarily based on our prior experience and knowledge. Most of the individuals that we personally know that are diagnosed with diabetes were diagnosed later in life, but we did consider how there are two types of diabetes and the onset of these two types. Type I typically is diagnosed in children and teens and Type II is typically diagnosed in adulthood. Given that Type II diabetes is notably more prevalent than Type I, we still expected the data to show a positive correlation between age and diabetes diagnosis though the data does not distinguish between either type of diabetes. Out of the 520 patients that were interviewed, the ages ranged from 16 to 90. The mean age of the patients with diabetes was 49.07, and the mean age of the patients without diabetes was 46.36.
+
+### BAR CHART:
+
 <img src="plots/Diabetes_Incidence_by_Age.png" alt="gender" width="500"/>
+
+### CONCLUSION:
+
+
 
 ## Gender:
 
