@@ -29,7 +29,7 @@ In the dataset, out of the 520 patients, 320 of the patients were diagnosed with
 
 <img src="plots/corrplot.png" alt="correlation" width="500"/>
 
-We calculated the Pearson correlation coefficent for each combination of features and visualized this in the form of a correlation matrix. In the matrix, the darker squares signify a greater correlation. The response variable, class, or the diagnosis of diabetes is most strongly and positively associated with polyuria and polydipsia, out of all the features. On top of this, polyuria also has a positive and moderately strong association with polydipsia
+We calculated the Pearson correlation coefficent for each combination of features and visualized this in the form of a correlation matrix. In the matrix, the darker squares signify a greater correlation. The response variable, `class`, or the diagnosis of diabetes is most strongly and positively associated with polyuria and polydipsia, out of all the features. On top of this, polyuria also has a positive and moderately strong association with polydipsia.
 
 ## Feature Selection
 
@@ -65,7 +65,7 @@ Our initial hypothesis was that if the patient was older, the patient has a high
 
 <img src="plots/Diabetes_Incidence_by_Age.png" alt="gender" width="500"/>
 
-### CONCLUSION:
+### Conclusion:
 
 From the density graph and the indicated mean ages of patients with and without diabetes, we can tell that there is only a slightly higher average age for patients with diabetes and patients without diabetes. This shows that age is likely not a significant factor for diabetes. However, the data was collected at a diabetes hospital and did not account for diabetes type as a potential confounding variable. We cannot make any significant conclusions, but either way, the density graph does not support our initial hypothesis.
 
@@ -79,7 +79,7 @@ Gender was only characterized by two distinct sexes: male and female. Our initia
 
 <img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
 
-### CONCLUSION:
+### Conclusion:
 
 From the bar chart, the frequency of male patients was far greater than the frequency of female patients. In this dataset, the majority of the patients with diabetes are female overall, despite how the frequency of male patients outnumber female patients in the dataset in total. Within the female patients, an overwhelming majority of the females were diagnosed with diabetes unlike and in comparison to the male patients in the dataset. The bar chart does not support our initial hypothesis, though it seems that female patients have a higher risk for diabetes with gender as a possible indicator for diabetes as a whole.
 
@@ -93,7 +93,7 @@ Polyuria is the production of abnormally large volumes of dilute urine. Our init
 
 <img src="plots/Diabetes_Incidence_by_Polyuria.png" alt="gender" width="500"/>
 
-### CONCLUSION:
+### Conclusion:
 
 From the bar chart, we can tell that a great number of individuals who were diagnosed with diabetes experienced polyuria. A few patients that were not diagnosed with diabetes also experienced polyuria, but there was a greater difference in the frequencies in the two situations. Due to this great difference, we can conclude that nearly all patients with polyuria have diabetes. Therefore, if a patient experiences polyuria, they have a higher chance of being diagnosed with diabetes. This shows us that a possible predictor/indicator for whether an individual has diabetes should be polyuria. Our bar chart also agreed with our initial hypothesis. 
 
@@ -107,7 +107,7 @@ Polydipsia is another term for abnormally excessive thirst. Our initial hypothes
 
 <img src="plots/Diabetes_Incidence_by_Polydipsia.png" alt="polydipsia" width="500"/>
 
-### CONCLUSION: 
+### Conclusion:
 
 By looking at the bar chart, we can see that nearly all patients that experienced polydipsia were diagnosed with diabetes. Some individuals that said "no", were also diagnosed with diabetes. However, almost every individual that said "yes" to polydipsia was later diagnosed with diabetes. We concluded that nearly all patients with polydipsia have diabetes. Therefore, if a patient experiences polydipsia, they have a higher chance of being diagnosed with diabetes. This conclusion and the bar chart support our initial hypothesis because a patient having polydipsia is an important indicator that they might also have a diagnosis. Therefore, polydipsia can be used as a predictor/indicator for diabetes due to these patterns. 
 
@@ -121,7 +121,7 @@ Our initial hypothesis for sudden weight loss was that if an individual had rece
 
 <img src="plots/Diabetes_Incidence_by_Sudden_Weight_Loss.png" alt="sudden weight loss" width="500"/>
 
-### CONCLUSION:
+### Conclusion:
 
 From the bar chart, we can see that a loss of individuals that said yes to experiencing sudden weight loss also was diagnosed with diabetes. There were a few who experienced sudden weight loss and were still not diagnosed with diabetes. Several individuals did not experience sudden weight loss and were still diagnosed with diabetes. Even though, sudden weight loss has a smaller amount of difference between the two values compared to polydipsia and polyuria; however, there is still a significant difference. Therefore, we concluded that if a patient has had sudden weight loss, it is very likely that they have diabetes, but the converse is not true. We did not include the second part within the initial hypothesis because we did not think about the pattern for the converse. However, the first part of our conclusion agrees with our initial hypothesis. Therefore, sudden weight loss can be used as a predictor/indicator of whether the patient will have diabetes or not. 
 
@@ -131,11 +131,11 @@ From the bar chart, we can see that a loss of individuals that said yes to exper
 
 Paresis is a condition typifies by a weakness of the voluntary movement. We came up with the initial hypothesis that if the individual has partial paresis, then they have a much higher chance of being diagnosed with diabetes. We came up with this hypothesis by using prior knowledge. Diabetes can sometimes lead to nerve damage which can lead to partial paresis in some cases, so we believed that there would be some sort of correlation between the two. 224 patients said "yes" to experiencing partial paresis, and 296 said "no" out of the 520 patients.  
 
-### BAR CHART:
+### Bar Chart:
 
 <img src="plots/Diabetes_Incidence_by_Partial_Paresis.png" alt="partial paresis" width="500"/>
 
-### CONCLUSION:
+### Conclusion:
 
 According to the bar chart most of the patients that said "yes" to partial paresis were diagnosed with diabetes. There were still several patients that said "no" to partial paresis and still were diagnosed with diabetes. The conclusion we came to was that if a patient has partial paresis, it is very likely that they have diabetes, but the converse is not true. This conclusion supports our initial hypothesis. Our initial hypothesis did not mention the converse; however, the first part of our conclusion still supports our initial hypothesis.  
 
