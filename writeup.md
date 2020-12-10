@@ -8,6 +8,8 @@ MATH 2820L Final Project
 
 By Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
 
+Nilai Vemula did the modeling work (linear regression and random forest). Anvitha Kosuraju did the introduction and the exploratory data analysis for polyuria, polydipsia, sudden weight loss, and partial paresis variables. Sithara Samudrala completed the correlation matrix, chi-square feature selection process, exploratory data analysis for the age and gender variables, and the conclusion.
+
 Table of Contents:
 
 * TOC
