@@ -59,11 +59,11 @@ When analyzing the various features we selected, we first came to an initial hyp
 
 ## Age:
 
-### INITIAL HYPOTHESIS:
+### Initial Hypothesis:
 
 Our initial hypothesis was that if the patient was older, the patient has a higher chance of being diagnosed with diabetes. This initial hypothesis was primarily based on our prior experience and knowledge. Most of the individuals that we personally know that are diagnosed with diabetes were diagnosed later in life, but we did consider how there are two types of diabetes and the onset of these two types. Type I typically is diagnosed in children and teens and Type II is typically diagnosed in adulthood. Given that Type II diabetes is notably more prevalent than Type I, we still expect the data to show a positive correlation between age and diabetes diagnosis though the data does not distinguish between either type of diabetes. Out of the 520 patients that were interviewed, the ages ranged from 16 to 90. The mean age of the patients with diabetes was 49.07, and the mean age of the patients without diabetes was 46.36.
 
-### DENSITY GRAPH:
+### Density Plot:
 
 <img src="plots/Diabetes_Incidence_by_Age.png" alt="gender" width="500"/>
 
@@ -73,11 +73,11 @@ From the density graph and the indicated mean ages of patients with and without 
 
 ## Gender:
 
-### INITIAL HYPOTHESIS:
+### Initial Hypothesis:
 
 Gender was only characterized by two distinct sexes: male and female. Our initial hypothesis was that gender would have not effect on chances of diabetes in which the primary basis for this hypothesis was prior knowledge. Therefore, we expect to see the proportion of diabetes to be fairly even between the two genders. Out of 520 patients interviewed, 328 were male and 192 were female. 
 
-### BAR CHART:
+### Bar Chart:
 
 <img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
 
@@ -87,11 +87,11 @@ From the bar chart, the frequency of male patients was far greater than the freq
 
 ## Polyuria:
 
-### INITIAL HYPOTHESIS:
+### Initial Hypothesis:
 
 Polyuria is the production of abnormally large volumes of dilute urine. Our initial hypothesis was that if the patient experienced polyuria, they have a higher chance of being diagnosed with diabetes. We came to this initial hypothesis through some research and prior knowledge. If an individual has diabetes, they tend to have higher blood sugar levels, and their kidney will try to filter out their high blood sugar levels. This produces a lot of excess urine, leading to polyuria. Out of the 520 patients that were interviewed, 258 had polyuria and 262 did not have polyuria. 
 
-### BAR CHART:
+### Bar Chart:
 
 <img src="plots/Diabetes_Incidence_by_Polyuria.png" alt="gender" width="500"/>
 
@@ -99,13 +99,13 @@ Polyuria is the production of abnormally large volumes of dilute urine. Our init
 
 From the bar chart, we can tell that a great number of individuals who were diagnosed with diabetes experienced polyuria. A few patients that were not diagnosed with diabetes also experienced polyuria, but there was a greater difference in the frequencies in the two situations. Due to this great difference, we can conclude that nearly all patients with polyuria have diabetes. Therefore, if a patient experiences polyuria, they have a higher chance of being diagnosed with diabetes. This shows us that a possible predictor/indicator for whether an individual has diabetes should be polyuria. Our bar chart also agreed with our initial hypothesis. 
 
-## POLYDIPSIA:
+## Polydipsia:
 
-### INITIAL HYPOTHESIS:
+### Initial Hypothesis:
 
 Polydipsia is another term for abnormally excessive thirst. Our initial hypothesis for polydipsia was that if an individual experienced polydipsia, then they have a much higher chance of being diagnosed with diabetes. We came to this hypothesis through prior knowledge. Excessive urine production or polyuria can lead to excessive thirst or polydipsia. When the body produces these high levels of sugar within the body, the body will produce increased levels of urine to get rid of excess sugar. Due to this increased level of urine production, it can lead to dehydration within the body leading to polydipsia. Out of the 520 patients that were interviewed, 233 said "yes" to experiencing polydipsia, and 287 said "no". 
 
-### BAR CHART:
+### Bar Chart:
 
 <img src="plots/Diabetes_Incidence_by_Polydipsia.png" alt="polydipsia" width="500"/>
 
@@ -113,13 +113,13 @@ Polydipsia is another term for abnormally excessive thirst. Our initial hypothes
 
 By looking at the bar chart, we can see that nearly all patients that experienced polydipsia were diagnosed with diabetes. Some individuals that said "no", were also diagnosed with diabetes. However, almost every individual that said "yes" to polydipsia was later diagnosed with diabetes. We concluded that nearly all patients with polydipsia have diabetes. Therefore, if a patient experiences polydipsia, they have a higher chance of being diagnosed with diabetes. This conclusion and the bar chart support our initial hypothesis because a patient having polydipsia is an important indicator that they might also have a diagnosis. Therefore, polydipsia can be used as a predictor/indicator for diabetes due to these patterns. 
 
-## SUDDEN WEIGHT LOSS:
+## Sudden Weight Loss:
 
-### INITIAL HYPOTHESIS:
+### Initial Hypothesis:
 
 Our initial hypothesis for sudden weight loss was that if an individual had recently experienced sudden weight loss, then they have a much higher chance of being diagnosed with diabetes. We came to this hypothesis due to prior knowledge. Insufficient insulin prevents the body from getting glucose from the blood into the body's cells to use as energy. Due to the body not having this instant source of energy, the body must instead use stored fat within the body as a way to get energy. The body starts to burn fat and muscle for energy, causing a reduction in overall body weight. Therefore, we believe that if a patient experiences sudden weight loss, then they have a high chance of being diagnosed with diabetes. Out of the 520 patients that were interviewed, 217 experienced sudden weight loss, and 303 did not. 
 
-### BAR CHART:
+### Bar Chart:
 
 <img src="plots/Diabetes_Incidence_by_Sudden_Weight_Loss.png" alt="sudden weight loss" width="500"/>
 
@@ -127,9 +127,9 @@ Our initial hypothesis for sudden weight loss was that if an individual had rece
 
 From the bar chart, we can see that a loss of individuals that said yes to experiencing sudden weight loss also was diagnosed with diabetes. There were a few who experienced sudden weight loss and were still not diagnosed with diabetes. Several individuals did not experience sudden weight loss and were still diagnosed with diabetes. Even though, sudden weight loss has a smaller amount of difference between the two values compared to polydipsia and polyuria; however, there is still a significant difference. Therefore, we concluded that if a patient has had sudden weight loss, it is very likely that they have diabetes, but the converse is not true. We did not include the second part within the initial hypothesis because we did not think about the pattern for the converse. However, the first part of our conclusion agrees with our initial hypothesis. Therefore, sudden weight loss can be used as a predictor/indicator of whether the patient will have diabetes or not. 
 
-## PARTIAL PARESIS:
+## Partial Paresis:
 
-### INITIAL HYPOTHESIS:
+### Initial Hypothesis:
 
 Paresis is a condition typifies by a weakness of the voluntary movement. We came up with the initial hypothesis that if the individual has partial paresis, then they have a much higher chance of being diagnosed with diabetes. We came up with this hypothesis by using prior knowledge. Diabetes can sometimes lead to nerve damage which can lead to partial paresis in some cases, so we believed that there would be some sort of correlation between the two. 224 patients said "yes" to experiencing partial paresis, and 296 said "no" out of the 520 patients.  
 
@@ -140,8 +140,6 @@ Paresis is a condition typifies by a weakness of the voluntary movement. We came
 ### Conclusion:
 
 According to the bar chart most of the patients that said "yes" to partial paresis were diagnosed with diabetes. There were still several patients that said "no" to partial paresis and still were diagnosed with diabetes. The conclusion we came to was that if a patient has partial paresis, it is very likely that they have diabetes, but the converse is not true. This conclusion supports our initial hypothesis. Our initial hypothesis did not mention the converse; however, the first part of our conclusion still supports our initial hypothesis.  
-
-
 
 # Model:
 
