@@ -1,21 +1,19 @@
 ---
-title: Diabetes Data Diving Final Write-up
+title: Diabetes Data Diving Write-up
 author: Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
 date: 12/9/2020
 ---
 
-MATH 2820L Final Project
+**MATH 2820L Final Project: Diabetes Data Diving**
 
-By Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala
+**By Nilai Vemula, Anvitha Kosuraju, and Sithara Samudrala**
 
 Nilai Vemula did the modeling work (linear regression and random forest). Anvitha Kosuraju did the introduction and the exploratory data analysis for polyuria, polydipsia, sudden weight loss, and partial paresis variables. Sithara Samudrala completed the correlation matrix, chi-square feature selection process, exploratory data analysis for the age and gender variables, and the conclusion.
-
-Table of Contents:
 
 * TOC
 {:toc}
 
-# Introduction:
+# Introduction
 
 The data we are analyzing were collected using direct questionnaires from patients from the Sylhet Diabetes Hospital that were located in Sylhet, Bangladesh. We found this data through the UCI Machine Learning Repository. Our data is collected from 520 patients from this hospital. The data provides information that points to possible correlations between having diabetes and other factors. These other factors include age, sex, polyuria, polydipsia, sudden weight loss, weakness, polyphagia, genital thrush, visual blurring, itching, irritability, delayed healing, partial paresis, muscle stiffness, alopecia, and obesity. Out of these variables, we had one ordinal variable, which was age. All of the other variables were categorical with either a "yes" or "no" answer. The response variable was "Class", which could either be "positive" or "negative" for diabetes. All of the answers from this questionnaire were approved by a doctor to make it reliable. 
 
@@ -23,125 +21,125 @@ Through this project, we want to understand these possible and common risk facto
 
 In conclusion, our main goals were to analyze the various data that were included to make important conclusions about diabetes and related medical conditions. We also wanted to build a predictive model to be able to accurately determine if a specific patient has diabetes given their medical data, history, and symptoms. Additionally, we want to be able to determine which factors out of the variables in our data are the best predictors for if a specific patient will be diagnosed with diabetes or not. 
 
-# Data:
+# Data
 
 In the dataset, out of the 520 patients, 320 of the patients were diagnosed with Diabetes and 200 of the patients were not diagnosed with Diabetes. This is important to know, so we can see the factors that predominantly occurred with the 320 patients that were diagnosed versus 200 patients that were not diagnosed with diabetes. 
 
-## Correlation Matrix:
+## Correlation Matrix
 
-<img src="plots/corrplot.png" alt="correlation" width="500"/>
+<img src="plots/corrplot.png" alt="Correlation Heatmap" width="500"/>
 
-We calculated the Pearson correlation coefficent for each combination of features and visualized this in the form of a correlation matrix. In the matrix, the darker squares signify a greater correlation. The response variable, `class`, or the diagnosis of diabetes is most strongly and positively associated with polyuria and polydipsia, out of all the features. On top of this, polyuria also has a positive and moderately strong association with polydipsia.
+We calculated the Pearson correlation coefficient for each combination of features and visualized this in the form of a correlation matrix. In the matrix, the darker squares signify a greater correlation. The response variable, `class`, or the diagnosis of diabetes is most strongly and positively associated with polyuria and polydipsia, out of all the features. On top of this, polyuria also has a positive and moderately strong association with polydipsia.
 
 ## Feature Selection
 
 Chi-square feature selection was used as our method for selecting some of our 15 categorical predictor variables for further analysis. We aimed to select the top features that are most dependent on the response variable, class, or the diagnosis of diabetes. Since the Chi-square feature selection method tests the independence between two variables, we can compare the calculated chi-squared test statistics to determine which features are most dependent on class. Hence, if the chi-squared test statistic is greater, this is more likely to indicate that the feature and class are not independent or in other words, dependent.
 
-|      Feature       | 𝜒2 Test Statistic |
-| :----------------: | :---------------: |
-|      Polyuria      |       227.9       |
-|     Polydipsia     |       216.2       |
-|       Gender       |       103.1       |
-| Sudden Weight Loss |       97.3        |
-|  Partial Paresis   |       95.4        |
-|     Polyphagia     |       59.6        |
-|    Irritability    |       45.2        |
-|      Alopecia      |       36.1        |
-|  Visual Blurring   |       31.8        |
-|      Weakness      |       29.8        |
+| Feature            | $\chi^2$ Test Statistic |
+| ------------------ | ----------------------- |
+| Polyuria           | 227.9                   |
+| Polydipsia         | 216.2                   |
+| Gender             | 103.1                   |
+| Sudden Weight Loss | 97.3                    |
+| Partial Paresis    | 95.4                    |
+| Polyphagia         | 59.6                    |
+| Irritability       | 45.2                    |
+| Alopecia           | 36.1                    |
+| Visual Blurring    | 31.8                    |
+| Weakness           | 29.8                    |
 
 
-### Selected Features:
+### Selected Features
 
 We chose the variables with the highest chi-square values (Polyuria, Polydipsia, Gender, Sudden Weight Loss, and Partial Paresis) along with Age to investigate further. 
 
 When analyzing the various features we selected, we first came to an initial hypothesis as a group. We then created bar charts to provide an analysis of the specific variable and how this affects the possibility of diagnosis for diabetes. Then, we came to a conclusion based on our analysis of the bar chart. Our conclusion was based on if our bar chart supported or contradict the initial hypothesis, and what our bar chart indicated was the relationship between the variable and the possible diagnosis for diabetes.
 
-## Age:
+## Age
 
-### Initial Hypothesis:
+### Initial Hypothesis
 
 Our initial hypothesis was that if the patient was older, the patient has a higher chance of being diagnosed with diabetes. This initial hypothesis was primarily based on our prior experience and knowledge. Most of the individuals that we personally know that are diagnosed with diabetes were diagnosed later in life, but we did consider how there are two types of diabetes and the onset of these two types. Type I typically is diagnosed in children and teens and Type II is typically diagnosed in adulthood. Given that Type II diabetes is notably more prevalent than Type I, we still expect the data to show a positive correlation between age and diabetes diagnosis though the data does not distinguish between either type of diabetes. Out of the 520 patients that were interviewed, the ages ranged from 16 to 90. The mean age of the patients with diabetes was 49.07, and the mean age of the patients without diabetes was 46.36.
 
-### Density Plot:
+### Density Plot
 
-<img src="plots/Diabetes_Incidence_by_Age.png" alt="gender" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Age.png" alt="Age Density Plot" width="500"/>
 
-### Conclusion:
+### Conclusion
 
 From the density graph and the indicated mean ages of patients with and without diabetes, we can tell that there is only a slightly higher average age for patients with diabetes and patients without diabetes. This shows that age is likely not a significant factor for diabetes. However, the data was collected at a diabetes hospital and did not account for diabetes type as a potential confounding variable. We cannot make any significant conclusions, but either way, the density graph does not support our initial hypothesis.
 
-## Gender:
+## Gender
 
-### Initial Hypothesis:
+### Initial Hypothesis
 
 Gender was only characterized by two distinct sexes: male and female. Our initial hypothesis was that gender would have not effect on chances of diabetes in which the primary basis for this hypothesis was prior knowledge. Therefore, we expect to see the proportion of diabetes to be fairly even between the two genders. Out of 520 patients interviewed, 328 were male and 192 were female. 
 
-### Bar Chart:
+### Bar Chart
 
-<img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Gender.png" alt="Diabetes Incidence by Gender" width="500"/>
 
-### Conclusion:
+### Conclusion
 
 From the bar chart, the frequency of male patients was far greater than the frequency of female patients. In this dataset, the majority of the patients with diabetes are female overall, despite how the frequency of male patients outnumber female patients in the dataset in total. Within the female patients, an overwhelming majority of the females were diagnosed with diabetes unlike and in comparison to the male patients in the dataset. The bar chart does not support our initial hypothesis, though it seems that female patients have a higher risk for diabetes with gender as a possible indicator for diabetes as a whole.
 
-## Polyuria:
+## Polyuria
 
-### Initial Hypothesis:
+### Initial Hypothesis
 
 Polyuria is the production of abnormally large volumes of dilute urine. Our initial hypothesis was that if the patient experienced polyuria, they have a higher chance of being diagnosed with diabetes. We came to this initial hypothesis through some research and prior knowledge. If an individual has diabetes, they tend to have higher blood sugar levels, and their kidney will try to filter out their high blood sugar levels. This produces a lot of excess urine, leading to polyuria. Out of the 520 patients that were interviewed, 258 had polyuria and 262 did not have polyuria. 
 
-### Bar Chart:
+### Bar Chart
 
-<img src="plots/Diabetes_Incidence_by_Polyuria.png" alt="gender" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Polyuria.png" alt="Diabetes Incidence by Polyuria" width="500"/>
 
-### Conclusion:
+### Conclusion
 
 From the bar chart, we can tell that a great number of individuals who were diagnosed with diabetes experienced polyuria. A few patients that were not diagnosed with diabetes also experienced polyuria, but there was a greater difference in the frequencies in the two situations. Due to this great difference, we can conclude that nearly all patients with polyuria have diabetes. Therefore, if a patient experiences polyuria, they have a higher chance of being diagnosed with diabetes. This shows us that a possible predictor/indicator for whether an individual has diabetes should be polyuria. Our bar chart also agreed with our initial hypothesis. 
 
-## Polydipsia:
+## Polydipsia
 
-### Initial Hypothesis:
+### Initial Hypothesis
 
 Polydipsia is another term for abnormally excessive thirst. Our initial hypothesis for polydipsia was that if an individual experienced polydipsia, then they have a much higher chance of being diagnosed with diabetes. We came to this hypothesis through prior knowledge. Excessive urine production or polyuria can lead to excessive thirst or polydipsia. When the body produces these high levels of sugar within the body, the body will produce increased levels of urine to get rid of excess sugar. Due to this increased level of urine production, it can lead to dehydration within the body leading to polydipsia. Out of the 520 patients that were interviewed, 233 said "yes" to experiencing polydipsia, and 287 said "no". 
 
-### Bar Chart:
+### Bar Chart
 
-<img src="plots/Diabetes_Incidence_by_Polydipsia.png" alt="polydipsia" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Polydipsia.png" alt="Diabetes Incidence by Polydipsia" width="500"/>
 
-### Conclusion:
+### Conclusion
 
 By looking at the bar chart, we can see that nearly all patients that experienced polydipsia were diagnosed with diabetes. Some individuals that said "no", were also diagnosed with diabetes. However, almost every individual that said "yes" to polydipsia was later diagnosed with diabetes. We concluded that nearly all patients with polydipsia have diabetes. Therefore, if a patient experiences polydipsia, they have a higher chance of being diagnosed with diabetes. This conclusion and the bar chart support our initial hypothesis because a patient having polydipsia is an important indicator that they might also have a diagnosis. Therefore, polydipsia can be used as a predictor/indicator for diabetes due to these patterns. 
 
-## Sudden Weight Loss:
+## Sudden Weight Loss
 
-### Initial Hypothesis:
+### Initial Hypothesis
 
 Our initial hypothesis for sudden weight loss was that if an individual had recently experienced sudden weight loss, then they have a much higher chance of being diagnosed with diabetes. We came to this hypothesis due to prior knowledge. Insufficient insulin prevents the body from getting glucose from the blood into the body's cells to use as energy. Due to the body not having this instant source of energy, the body must instead use stored fat within the body as a way to get energy. The body starts to burn fat and muscle for energy, causing a reduction in overall body weight. Therefore, we believe that if a patient experiences sudden weight loss, then they have a high chance of being diagnosed with diabetes. Out of the 520 patients that were interviewed, 217 experienced sudden weight loss, and 303 did not. 
 
-### Bar Chart:
+### Bar Chart
 
-<img src="plots/Diabetes_Incidence_by_Sudden_Weight_Loss.png" alt="sudden weight loss" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Sudden_Weight_Loss.png" alt="Diabetes Incidence by Sudden Weight Loss" width="500"/>
 
-### Conclusion:
+### Conclusion
 
 From the bar chart, we can see that a loss of individuals that said yes to experiencing sudden weight loss also was diagnosed with diabetes. There were a few who experienced sudden weight loss and were still not diagnosed with diabetes. Several individuals did not experience sudden weight loss and were still diagnosed with diabetes. Even though, sudden weight loss has a smaller amount of difference between the two values compared to polydipsia and polyuria; however, there is still a significant difference. Therefore, we concluded that if a patient has had sudden weight loss, it is very likely that they have diabetes, but the converse is not true. We did not include the second part within the initial hypothesis because we did not think about the pattern for the converse. However, the first part of our conclusion agrees with our initial hypothesis. Therefore, sudden weight loss can be used as a predictor/indicator of whether the patient will have diabetes or not. 
 
-## Partial Paresis:
+## Partial Paresis
 
-### Initial Hypothesis:
+### Initial Hypothesis
 
 Paresis is a condition typifies by a weakness of the voluntary movement. We came up with the initial hypothesis that if the individual has partial paresis, then they have a much higher chance of being diagnosed with diabetes. We came up with this hypothesis by using prior knowledge. Diabetes can sometimes lead to nerve damage which can lead to partial paresis in some cases, so we believed that there would be some sort of correlation between the two. 224 patients said "yes" to experiencing partial paresis, and 296 said "no" out of the 520 patients.  
 
-### Bar Chart:
+### Bar Chart
 
-<img src="plots/Diabetes_Incidence_by_Partial_Paresis.png" alt="partial paresis" width="500"/>
+<img src="plots/Diabetes_Incidence_by_Partial_Paresis.png" alt="Diabetes Incidence by Partial Paresis" width="500"/>
 
-### Conclusion:
+### Conclusion
 
 According to the bar chart most of the patients that said "yes" to partial paresis were diagnosed with diabetes. There were still several patients that said "no" to partial paresis and still were diagnosed with diabetes. The conclusion we came to was that if a patient has partial paresis, it is very likely that they have diabetes, but the converse is not true. This conclusion supports our initial hypothesis. Our initial hypothesis did not mention the converse; however, the first part of our conclusion still supports our initial hypothesis.  
 
-# Model:
+# Model
 
 For the modelling portion of our project, we compared two different types of models. For our simple model, we tried out a linear regression. For our complex model, we implemented a random forest classifier. 
 
@@ -224,7 +222,7 @@ makes it much more likely for a patient to have diabetes.
 
 We can also calculate the following performance metrics for our model.
 
-Mean Squared Prediction Error (MSPE):
+#### Mean Squared Prediction Error (MSPE)
 
 ``` r
 mean(model$residual^2)
@@ -232,7 +230,7 @@ mean(model$residual^2)
 
     ## [1] 0.09561477
 
-\(R^2\):
+#### Coefficient of Determination ($R^2$)
 
 ``` r
 summary(model)$r.squared 
@@ -252,7 +250,9 @@ independence assumption of the linear model is not met.
 Residual Plot:
 
 ``` r
-mod_results <- data.frame(observed = data$class, predicted = model$fitted.values, residual = model$residuals)
+mod_results <- data.frame(observed = data$class, 
+                          predicted = model$fitted.values, 
+                          residual = model$residuals)
 head(mod_results)
 ```
 
@@ -275,7 +275,7 @@ ggplot(mod_results, aes(y = residual, x = predicted)) +
   theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
 ```
 
-![](notebooks/linear_model_files/figure-gfm/residual-1.png)<!-- -->
+![Residual Plot](notebooks/linear_model_files/figure-gfm/residual-1.png)
 
 
 
@@ -298,7 +298,7 @@ ggplot(mod_results, aes(sample = residual)) +
   theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
 ```
 
-![](notebooks/linear_model_files/figure-gfm/qq-1.png)<!-- -->
+![Q-Q Plot](notebooks/linear_model_files/figure-gfm/qq-1.png)
 
 
 
@@ -468,7 +468,7 @@ few trees, but then it quickly plateaus.
 plot(rf)
 ```
 
-![](notebooks/random_forest_files/figure-gfm/error-1.png)<!-- -->
+![Random Forest Error](notebooks/random_forest_files/figure-gfm/error-1.png)
 
 ### Variable Importance
 
@@ -477,7 +477,7 @@ par(bg="#f2f2f2")
 varImpPlot(rf, main="Variable Importance Plot", type=1, pch=19)
 ```
 
-![](notebooks/random_forest_files/figure-gfm/var-1.png)<!-- -->
+![Variable Importance Plot](notebooks/random_forest_files/figure-gfm/var-1.png)
 
 
 The random forest model is very interesting because it can allow us to
@@ -534,7 +534,7 @@ ggplot(data =  df, mapping = aes(x = true_class, y = predicted_class)) +
   theme(panel.background = element_rect(fill = '#f2f2f2', colour = '#f2f2f2'))
 ```
 
-![](notebooks/random_forest_files/figure-gfm/confusion-1.png)<!-- -->
+![Confusion Matrix](notebooks/random_forest_files/figure-gfm/confusion-1.png)
 
 
 ``` r
@@ -552,6 +552,6 @@ We can do further hyper-parameter tuning to improve our model more, but
 that is out of the scope of this project.
 
 
-# Conclusion:
+# Conclusion
 
 Overall, the presence of conditions such as polyuria, polydipsia, sudden weight loss, and partial paresis increased the likelihood that a patient has diabetes. The random forest model showed to be a very accurate model for predicting diabetes unlike the linear model. Therefore, the random forest model indicates the polyuria, polydipsia, age, and gender are the useful features for predicting the diagnosis of diabetes.
