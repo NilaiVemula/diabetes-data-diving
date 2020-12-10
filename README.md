@@ -6,6 +6,9 @@
 
 This project features analysis of a [dataset](https://archive.ics.uci.edu/ml/datasets/Early+stage+diabetes+risk+prediction+dataset.) from the UCI Machine Learning Repository about diabetes. Our [project proposal](proposal.md) includes information about how we want to analyze and model our data. Additionally, this [write-up](writeup.md) documents our process and findings, and our [final presentation](presentation.pdf) shows this information in slides.
 
+**Write-up**: [PDF](writeup.pdf) [Markdown](writeup.md)
+
+
 ## Notebooks
 
 The code for this project can be found in the following Rmarkdown notebooks:
