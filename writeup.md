@@ -29,9 +29,11 @@ In the dataset, out of the 520 patients, 320 of the patients were diagnosed with
 
 <img src="plots/corrplot.png" alt="correlation" width="500"/>
 
+We calculated the Pearson correlation coefficent for each combination of features and visualized this in the form of a correlation matrix. In the matrix, the darker squares signify a greater correlation. The response variable, class, or the diagnosis of diabetes is most strongly and positively associated with polyuria and polydipsia, out of all the features. On top of this, polyuria also has a positive and moderately strong association with polydipsia
+
 ## Feature Selection
 
-Chi-square feature selection was used as our method for selecting some of our 15 categorical predictor variables for further analysis.
+Chi-square feature selection was used as our method for selecting some of our 15 categorical predictor variables for further analysis. We aimed to select the top features that are most dependent on the response variable, class, or the diagnosis of diabetes. Since the Chi-square feature selection method tests the independence between two variables, we can compare the calculated chi-squared test statistics to determine which features are most dependent on class. Hence, if the chi-squared test statistic is greater, this is more likely to indicate that the feature and class are not independent or in other words, dependent.
 
 |      Feature       | 𝜒2 Test Statistic |
 | :----------------: | :---------------: |
@@ -47,8 +49,8 @@ Chi-square feature selection was used as our method for selecting some of our 15
 |      Weakness      |       29.8        |
 
 
-
 ### Selected Features:
+
 We chose the variables with the highest chi-square values (Polyuria, Polydipsia, Gender, Sudden Weight Loss, and Partial Paresis) along with Age to investigate further. 
 
 When analyzing the various features we selected, we first came to an initial hypothesis as a group. We then created bar charts to provide an analysis of the specific variable and how this affects the possibility of diagnosis for diabetes. Then, we came to a conclusion based on our analysis of the bar chart. Our conclusion was based on if our bar chart supported or contradict the initial hypothesis, and what our bar chart indicated was the relationship between the variable and the possible diagnosis for diabetes.
@@ -551,3 +553,5 @@ that is out of the scope of this project.
 
 
 # Conclusion:
+
+Overall, the presence of conditions such as polyuria, polydipsia, sudden weight loss, and partial paresis increased the likelihood that a patient has diabetes. The random forest model showed to be a very accurate model for predicting diabetes unlike the linear model. Therefore, the random forest model indicates the polyuria, polydipsia, age, and gender are the useful features for predicting the diagnosis of diabetes.
