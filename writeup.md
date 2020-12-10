@@ -65,12 +65,11 @@ Our initial hypothesis was that if the patient was older, the patient has a high
 
 ### CONCLUSION:
 
-
+From the density graph and the indicated mean ages of patients with and without diabetes, we can tell that there is only a slightly higher average age for patients with diabetes and patients without diabetes. This shows that age is likely not a significant factor for diabetes. However, the data was collected at a diabetes hospital and did not account for diabetes type as a potential confounding variable. We cannot make any significant conclusions, but either way, the density graph does not support our initial hypothesis.
 
 ## Gender:
 
 <img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
-
 
 ## Polyuria:
 
