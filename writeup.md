@@ -57,9 +57,9 @@ When analyzing the various features we selected, we first came to an initial hyp
 
 ### INITIAL HYPOTHESIS:
 
-Our initial hypothesis was that if the patient was older, the patient has a higher chance of being diagnosed with diabetes. This initial hypothesis was primarily based on our prior experience and knowledge. Most of the individuals that we personally know that are diagnosed with diabetes were diagnosed later in life, but we did consider how there are two types of diabetes and the onset of these two types. Type I typically is diagnosed in children and teens and Type II is typically diagnosed in adulthood. Given that Type II diabetes is notably more prevalent than Type I, we still expected the data to show a positive correlation between age and diabetes diagnosis though the data does not distinguish between either type of diabetes. Out of the 520 patients that were interviewed, the ages ranged from 16 to 90. The mean age of the patients with diabetes was 49.07, and the mean age of the patients without diabetes was 46.36.
+Our initial hypothesis was that if the patient was older, the patient has a higher chance of being diagnosed with diabetes. This initial hypothesis was primarily based on our prior experience and knowledge. Most of the individuals that we personally know that are diagnosed with diabetes were diagnosed later in life, but we did consider how there are two types of diabetes and the onset of these two types. Type I typically is diagnosed in children and teens and Type II is typically diagnosed in adulthood. Given that Type II diabetes is notably more prevalent than Type I, we still expect the data to show a positive correlation between age and diabetes diagnosis though the data does not distinguish between either type of diabetes. Out of the 520 patients that were interviewed, the ages ranged from 16 to 90. The mean age of the patients with diabetes was 49.07, and the mean age of the patients without diabetes was 46.36.
 
-### BAR CHART:
+### DENSITY GRAPH:
 
 <img src="plots/Diabetes_Incidence_by_Age.png" alt="gender" width="500"/>
 
@@ -69,7 +69,17 @@ From the density graph and the indicated mean ages of patients with and without 
 
 ## Gender:
 
+### INITIAL HYPOTHESIS:
+
+Gender was only characterized by two distinct sexes: male and female. Our initial hypothesis was that gender would have not effect on chances of diabetes in which the primary basis for this hypothesis was prior knowledge. Therefore, we expect to see the proportion of diabetes to be fairly even between the two genders. Out of 520 patients interviewed, 328 were male and 192 were female. 
+
+### BAR CHART:
+
 <img src="plots/Diabetes_Incidence_by_Gender.png" alt="gender" width="500"/>
+
+### CONCLUSION:
+
+From the bar chart, the frequency of male patients was far greater than the frequency of female patients. In this dataset, the majority of the patients with diabetes are female overall, despite how the frequency of male patients outnumber female patients in the dataset in total. Within the female patients, an overwhelming majority of the females were diagnosed with diabetes unlike and in comparison to the male patients in the dataset. The bar chart does not support our initial hypothesis, though it seems that female patients have a higher risk for diabetes with gender as a possible indicator for diabetes as a whole.
 
 ## Polyuria:
 
@@ -89,7 +99,7 @@ From the bar chart, we can tell that a great number of individuals who were diag
 
 ### INITIAL HYPOTHESIS:
 
-Polydipsia is another term for abnormally excessive thirst. Our initial hypothesis for polydipsia was that if an individual experienced polydipsia, then they have a much higher chance of being diagnosed with diabetes. We came to this hypothesis through prior knowledge. Excessive urine production or polyuria can lead to excessive thirst or polydipsia. When the body produces these high levels of sugar within the body, the body will produce increased levels of urine to get rid of excess sugar. Due to this increased level of urine production, it can lead to dehydration within the body leading to polydipsia. Out of the 520  patients that were interviewed, 233 said "yes" to experiencing polydipsia, and 287 said "no". 
+Polydipsia is another term for abnormally excessive thirst. Our initial hypothesis for polydipsia was that if an individual experienced polydipsia, then they have a much higher chance of being diagnosed with diabetes. We came to this hypothesis through prior knowledge. Excessive urine production or polyuria can lead to excessive thirst or polydipsia. When the body produces these high levels of sugar within the body, the body will produce increased levels of urine to get rid of excess sugar. Due to this increased level of urine production, it can lead to dehydration within the body leading to polydipsia. Out of the 520 patients that were interviewed, 233 said "yes" to experiencing polydipsia, and 287 said "no". 
 
 ### BAR CHART:
 
